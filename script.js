@@ -11,6 +11,19 @@ class Ship {
 	}
 }
 
-class Gameboard {}
+class Gameboard {
+	constructor() {
+		this.board = [];
+	}
 
-module.exports = { Ship, Gameboard };
+	placeShip(ship, shipStartPos, isVertical) {
+		if (!isVertical) {
+			this.board.push([shipStartPos[0], shipStartPos[1] + ship.length - 1]);
+		}
+	}
+}
+
+module.exports = {
+	Ship,
+	Gameboard,
+};

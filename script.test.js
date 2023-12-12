@@ -1,4 +1,4 @@
-const Ship = require('./script');
+const { Ship, Gameboard } = require('./script');
 
 describe('Ship Class', () => {
 	beforeEach(() => {
@@ -19,4 +19,28 @@ describe('Ship Class', () => {
 		expect(deadShip.isSunken).toBe(true);
 		expect(ship.isSunken).toBe(false);
 	});
+});
+
+describe('Gameboard Class', () => {
+	beforeEach(() => {
+		gameBoard = new Gameboard();
+	});
+
+	test('create new board', () => {
+		expect(gameBoard.board).toEqual([]);
+	});
+
+	test('place ship', () => {
+		gameBoard.placeShip(new Ship(1), [1, 1]);
+		expect(gameBoard.board).toEqual([[1, 1]]);
+	});
+
+	test('ship length spans board', () => {
+		gameBoard.placeShip(new Ship(4), [1, 1], false);
+		expect(gameBoard.board).toEqual([[1, 4]]);
+
+		gameBoard.placeShip(new Ship(4), [1, 4], true);
+	});
+
+	test.todo('ship is flipped if goes over edge');
 });
