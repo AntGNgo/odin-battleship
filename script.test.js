@@ -35,11 +35,14 @@ describe('Gameboard Class', () => {
 		expect(gameBoard.board).toEqual([[1, 1]]);
 	});
 
-	test('ship length spans board', () => {
+	test('ship length spans board horizontally', () => {
 		gameBoard.placeShip(new Ship(4), [1, 1], false);
 		expect(gameBoard.board).toEqual([[1, 4]]);
+	});
 
+	test('ship length spand board vertically', () => {
 		gameBoard.placeShip(new Ship(4), [1, 4], true);
+		expect(gameBoard.board).toEqual([[1]]);
 	});
 
 	test.todo('ship is flipped if goes over edge');
